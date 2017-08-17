@@ -52,11 +52,11 @@ namespace luabind {
 			assert(0 && "the lua function's return value could not be converted."
 				" If you want to handle the error you can use luabind::set_cast_failed_callback()");
 			std::terminate();
-#endif	
+#endif
 		}
 
 		template< typename... Args >
-		void expand_hack(Args... args)
+		void expand_hack(Args... /*args*/)
 		{}
 
 	}

@@ -45,6 +45,9 @@ namespace luabind {
 		{
 			invoke_context()
 				: best_score((std::numeric_limits<int>::max)())
+				  //This need to avoid static analyzer's treats
+				, candidates{nullptr,nullptr,nullptr,nullptr,nullptr,
+				             nullptr,nullptr,nullptr,nullptr,nullptr}
 				, candidate_index(0)
 			{}
 
@@ -125,7 +128,7 @@ namespace luabind {
 				static void postcall(lua_State* /*L*/, int /*results*/) {}
 			};
 
-#ifndef LUABIND_NO_INTERNAL_TAG_ARGUMENTS		
+#ifndef LUABIND_NO_INTERNAL_TAG_ARGUMENTS
 			template< typename... ArgumentConverters >
 			struct compute_invoke_values {
 				using consumed_list = meta::index_list< FooFoo<ArgumentConverters>::consumed_args... >;

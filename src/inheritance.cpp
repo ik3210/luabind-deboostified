@@ -64,6 +64,9 @@ namespace luabind {
 				map_type m_cache;
 			};
 
+			constexpr std::ptrdiff_t cache::unknown;
+			constexpr std::ptrdiff_t cache::invalid;
+
 			cache_entry cache::get(class_id src, class_id target, class_id dynamic_id, std::ptrdiff_t object_offset) const
 			{
 				map_type::const_iterator i = m_cache.find(
